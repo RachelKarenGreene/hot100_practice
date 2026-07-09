@@ -21,3 +21,17 @@ class Solution:
             if uu not in result_t or result_s[uu] != result_t[uu]:
                 return False
         return True
+
+class Solution2:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        record = [0]*26
+        for ss in s:
+            record[ord(ss) - ord('a')] += 1
+        for tt in t:
+            record[ord(tt) - ord('a')] -= 1
+        for i in range(26):
+            if record[i] != 0:
+                return False
+        return True
